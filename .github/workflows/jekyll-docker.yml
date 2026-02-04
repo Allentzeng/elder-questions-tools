@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>應付長輩問題神器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        
+        .category {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .category h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .answer-box {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-radius: 15px;
+            display: none;
+            animation: slideIn 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .answer-box.show {
+            display: block;
+        }
+        
+        .answer-box h3 {
+            color: #d63031;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .answer-box p {
+            color: #2d3436;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .copy-btn {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: #00b894;
+            font-size: 0.9em;
+        }
+        
+        .copy-btn:hover {
+            background: #00a383;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            button {
+                font-size: 0.9em;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ 應付長輩問題神器</h1>
+        <p class="subtitle">過年必備！一鍵生成完美回答</p>
+        
+        <!-- 感情類 -->
+        <div class="category">
+            <h2>💕 感情篇</h2>
+            <div class="buttons">
+                <button onclick="showAnswer('有對象了嗎？', '有在努力認識新朋友啦！現在工作比較忙，不過也有在留意合適的人。您有好的介紹也可以跟我說喔！')">有對象了嗎？</button>
+                <button onclick="showAnswer('什麼時候結婚？', '還在努力存錢中！現在結婚成本高，想要給另一半更好的生活品質，所以還在準備階段。謝謝您的關心！')">什麼時候結婚？</button>
+                <button onclick="showAnswer('怎麼還不生小孩？', '我們有在計劃啦！想先把經濟基礎打穩一點，給孩子更好的成長環境。而且現在醫學發達，不用太擔心年齡問題。')">怎麼還不生小孩？</button>
+                <button onclick="showAnswer('要不要我介紹對象？', '謝謝您的好意！如果有合適的可以先讓我看看照片和基本資料，我會認真考慮的。您真是太關心我了！')">要不要我介紹對象？</button>
+            </div>
+        </div>
+        
+        <!-- 學業類 -->
+        <div class="category">
+            <h2>📚 學業篇</h2>
+            <div class="buttons">
+                <button onclick="showAnswer('成績怎麼樣？', '還不錯啦！這學期有進步，老師也說我表現穩定。我會繼續努力的，謝謝您關心！')">成績怎麼樣？</button>
+                <button onclick="showAnswer('考上哪間學校？', '目前還在準備中，有幾間目標學校。我會盡力而為，考上了一定第一時間跟您分享好消息！')">考上哪間學校？</button>
+                <button onclick="showAnswer('讀什麼科系？', '我讀的是XX系，這個領域現在發展很好，未來就業機會也不錯。我對這個很有興趣，會好好學習的！')">讀什麼科系？</button>
+                <button onclick="showAnswer('要不要考研究所？', '我有在考慮！會先看看工作經驗和產業需求，再決定是否繼續深造。謝謝您給我建議！')">要不要考研究所？</button>
+            </div>
+        </div>
+        
+        <!-- 事業類 -->
+        <div class="category">
+            <h2>💼 事業篇</h2>
+            <div class="buttons">
+                <button onclick="showAnswer('工作找到了嗎？', '有在面試幾家公司，目前進度還不錯！我會選擇最適合自己發展的機會，謝謝您關心！')">工作找到了嗎？</button>
+                <button onclick="showAnswer('薪水多少？', '還可以啦，在這個產業算是平均水平。公司福利不錯，我也在持續進修提升自己，相信會越來越好的！')">薪水多少？</button>
+                <button onclick="showAnswer('什麼時候升職？', '我有在努力爭取！主管也有看到我的表現，公司有明確的升遷制度，我會按部就班往上走的。')">什麼時候升職？</button>
+                <button onclick="showAnswer('要不要考公務員？', '我有考慮過！不過目前的工作也讓我學到很多，我會評估自己的職涯規劃再做決定。謝謝您的建議！')">要不要考公務員？</button>
+                <button onclick="showAnswer('工作穩定嗎？', '很穩定！公司營運狀況良好，而且我的專業技能也在不斷提升，不用擔心啦！')">工作穩定嗎？</button>
+            </div>
+        </div>
+        
+        <!-- 生活類 -->
+        <div class="category">
+            <h2>🏠 生活篇</h2>
+            <div class="buttons">
+                <button onclick="showAnswer('買房了嗎？', '還在存錢中！現在房價比較高，我想先累積更多頭期款。也有在關注市場動態，時機成熟就會下手的！')">買房了嗎？</button>
+                <button onclick="showAnswer('怎麼又胖了/瘦了？', '最近工作比較忙，飲食不太規律。不過我有在注意健康，也開始運動了，謝謝您提醒！')">怎麼又胖了/瘦了？</button>
+                <button onclick="showAnswer('存了多少錢？', '有在固定存錢啦！雖然不多，但每個月都有在累積。我會好好理財的，請放心！')">存了多少錢？</button>
+                <button onclick="showAnswer('什麼時候回家？', '我會盡量找時間回去的！工作告一段落就會回家看您們，到時候多待幾天好好陪您們！')">什麼時候回家？</button>
+            </div>
+        </div>
+        
+        <!-- 回答顯示區 -->
+        <div id="answerBox" class="answer-box">
+            <h3 id="question"></h3>
+            <p id="answer"></p>
+            <button class="copy-btn" onclick="copyAnswer()">📋 複製回答</button>
+        </div>
+    </div>
+    
+    <script>
+        function showAnswer(question, answer) {
+            const answerBox = document.getElementById('answerBox');
+            const questionEl = document.getElementById('question');
+            const answerEl = document.getElementById('answer');
+            
+            questionEl.textContent = '長輩問：' + question;
+            answerEl.textContent = answer;
+            
+            answerBox.classList.remove('show');
+            setTimeout(() => {
+                answerBox.classList.add('show');
+                answerBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+        
+        function copyAnswer() {
+            const answer = document.getElementById('answer').textContent;
+            navigator.clipboard.writeText(answer).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✅ 已複製！';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
